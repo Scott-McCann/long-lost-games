@@ -1,0 +1,8 @@
+
+{% if directors %}
+<ul>
+{% for director in directors %}
+    <li><a href="/core/directors/{{ director.id }}/">{{ director.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
