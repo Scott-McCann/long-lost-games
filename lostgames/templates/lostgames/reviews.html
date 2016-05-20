@@ -1,0 +1,7 @@
+{% if reviews %}
+<ul>
+{% for review in reviews %}
+    <li><a href="/core/reviews/{{ review.id }}/">{{ review.id }} {{ review.game }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

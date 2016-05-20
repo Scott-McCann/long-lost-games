@@ -1,0 +1,7 @@
+{% if companies %}
+<ul>
+{% for company in companies %}
+    <li><a href="/core/companies/{{ company.id }}/">{{ company.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

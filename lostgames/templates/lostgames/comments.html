@@ -1,0 +1,7 @@
+{% if comments %}
+<ul>
+{% for comment in comments %}
+    <li><a href="/core/comments/{{ comment.id }}/">{{ comment.id }} {{ comment.game }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

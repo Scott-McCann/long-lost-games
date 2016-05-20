@@ -1,0 +1,7 @@
+{% if publishers %}
+<ul>
+{% for publisher in publishers %}
+    <li><a href="/core/publishers/{{ publisher.id }}/">{{ publisher.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}

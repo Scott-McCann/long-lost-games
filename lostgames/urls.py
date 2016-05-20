@@ -1,8 +1,33 @@
 from . import views
 from django.conf.urls import url
-from .models import Game
+from .models import Game, System, Company, Director, Publisher, Comment
 urlpatterns = [
-    url(r'^$', views.index, name='games-index'),
-    url(r'^(?P<game_id>[0-9]+)/$', views.view_game, name='content-view_game')
+
+    url(r'^$', views.index, name='core-index'),
+
+    url(r'^games/$', views.view_games, name='games-index'),
+    url(r'^games/(?P<game_id>[0-9]+)/$', views.view_game_details, name='content-game_details'),
+
+    url(r'^systems/$', views.view_systems, name='system-index'),
+    url(r'^systems/(?P<system_id>[0-9]+)/$', views.view_system_details, name='content-system_details'),
+
+    url(r'^companies/$', views.view_companies, name='company-index'),
+    url(r'^companies/(?P<company_id>[0-9]+)/$', views.view_company_details, name='content-company_details'),
+
+    url(r'^directors/$', views.view_directors, name='director-index'),
+    url(r'^directors/(?P<director_id>[0-9]+)/$', views.view_director_details, name='content-director_detials'),
+
+    url(r'^publishers/$', views.view_publishers, name='publisher-index'),
+    url(r'^publishers/(?P<publisher_id>[0-9]+)/$', views.view_publisher_details, name='content-publisher_details'),
+
+    url(r'^comments/$', views.view_comments, name='comments-index'),
+    url(r'^comments/(?P<comment_id>[0-9]+)/$', views.view_comment_details, name='content-comment_details'),
+
+    url(r'^reviews/$', views.view_reviews, name='reviews-index'),
+    url(r'^reviews/(?P<review_id>[0-9]+)/$', views.view_review_details, name='content-review_details'),
+
+    url(r'^review_comments/$', views.view_review_comments, name='review_comments-index'),
+    url(r'^review_comments/(?P<review_comment_id>[0-9]+)/$', views.view_review_comment_details, name='content-review_comment_details')
+
 
 ]

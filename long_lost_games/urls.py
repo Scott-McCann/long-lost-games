@@ -17,6 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^games/', include('lostgames.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^core/', include('lostgames.urls')),
+    # url(r'^systems/', include('lostgames.system_urls')),
+    # url(r'^companies/', include('lostgames.company_urls')),
+    url(r'^admin/', admin.site.urls)
+
 ]
