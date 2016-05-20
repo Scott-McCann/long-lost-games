@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Game(models.Model):
     title = models.CharField(max_length=256)
     release_date = models.DateField()
-    systems = models.ManyToManyField('System', null=False)
+    systems = models.ManyToManyField('System')
     company = models.ForeignKey('Company', null=True)
     publisher = models.ForeignKey('Publisher', null=True, on_delete=models.SET_NULL)
     director = models.ForeignKey('Director', null=True, on_delete=models.SET_NULL)
@@ -36,6 +36,7 @@ class Director(models.Model):
     name = models.CharField(max_length=256)
     bio = models.TextField()
 
+
     def __str__(self):
         return self.name
 
@@ -48,7 +49,7 @@ class Publisher(models.Model):
         return self.name
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     comment_text = models.TextField(blank=False, max_length=2500)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
@@ -57,7 +58,7 @@ class Comments(models.Model):
     likes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.name
+        return str(self.id) + ' ' + str(self.game) + '   -by: ' + str(self.user)
 
 class Review(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
@@ -67,10 +68,16 @@ class Review(models.Model):
     modified = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(default=0, null=False)
 
+    def __str__(self):
+        return str(self.id) + ' : ' + str(self.game) + '   -Submitted by: ' + str(self.user)
+
 class Review_Comment(models.Model):
-    review = models.ForeignKey(Game, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
     comment_text = models.TextField(blank=False, max_length=2500)
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(default=0, null=False)
+
+    def __str__(self):
+        return '#'+str(self.id) + '-- ' + str(self.review) +'--' + '   -by: ' + str(self.user)

@@ -1,0 +1,7 @@
+{% if review_comments %}
+<ul>
+{% for review_comment in review_comments %}
+    <li><a href="/core/review_comments/{{ review_comment.id }}/">#{{ review_comment.id }} {{ review_comment.review }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
