@@ -1,3 +1,8 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Comment{% endblock %}
+
+{% block content %}
 <article>
     <h1>{{ comment.game }}</h1>
     <h3>Submitted by: {{comment.user}}</h3>
@@ -8,3 +13,5 @@
     <h5>Edited: {{comment.modified}}</h5>
     <h5>Likes: {{comment.likes}}</h5>
 </article>
+
+{% endblock %}

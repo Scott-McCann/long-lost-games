@@ -1,9 +1,25 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Games{% endblock%}
+
+{% block content %}
+<h1>Games</h1>
+
+<p>Showing {{ games|length }} games</p>
 
 
 {% if games %}
 <ul>
 {% for game in games %}
-    <li><a href="/core/games/{{ game.id }}/">{{ game.title }}</a></li>
+  <li>
+     <a href="{% url 'game:game_details' game.id %}">
+      {{ game.better_Title }}
+     </a>
+
+  </li>
+
 {% endfor %}
 </ul>
 {% endif %}
+
+{% endblock %}

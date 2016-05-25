@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import Game, System, Company, Director, Publisher, Comment, Review, Review_Comment 
+from .models import Game, System, Company, Director, Publisher, Comment, Review, Review_Comment
 from django.template import loader
 from django.http import HttpResponse, Http404
 # Create your views here.
 def index(request):
-    return HttpResponse('<h1>Welcome to the Core</h1>')
+    return render(request, 'lostgames/index.html')
 
 #Game views go here.
 def view_games(request):

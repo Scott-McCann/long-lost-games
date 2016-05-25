@@ -1,3 +1,10 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<h1>Reviews</h1>
+
 {% if reviews %}
 <ul>
 {% for review in reviews %}
@@ -5,3 +12,4 @@
 {% endfor %}
 </ul>
 {% endif %}
+{% endblock %}
