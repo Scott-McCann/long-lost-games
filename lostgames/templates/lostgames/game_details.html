@@ -1,6 +1,12 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Games{% endblock %}
+
+{% block content %}
+
 <article>
-<h1>{{ game.title }}</h1>
-<h4>Release_date: {{ game.release_date }}</h4>
+<h1>{{ game.better_Title }}</h1>
+<h4>Release_date: {{ game.release_date }} |-| {{game.age.years}}Years and {{game.age.months}} months ago.</h4>
 <h4>System: {{ game.systems }}</h4>
 <h4>Developer: {{ game.company }}</h4>
 <h4>Publisher: {{ game.publisher }}</h4>
@@ -9,3 +15,10 @@
 <p>About: {{ game.plot_summary }}</p>
 <div><h5>Views: {{ game.views }}</h5></div>
 </article>
+
+
+<p><a href="{% url 'game:games-index' %}">back to list</a></p>
+
+
+
+{% endblock %}

@@ -1,3 +1,9 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Publisher{% endblock %}
+
+{% block content %}
+<h2>Publishers</h2>
 {% if publishers %}
 <ul>
 {% for publisher in publishers %}
@@ -5,3 +11,5 @@
 {% endfor %}
 </ul>
 {% endif %}
+
+{% endblock %}
