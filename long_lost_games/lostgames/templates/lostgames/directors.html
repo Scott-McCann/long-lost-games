@@ -1,3 +1,9 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Director{% endblock %}
+
+{% block content %}
+<h2>Directors</h2>
 
 {% if directors %}
 <ul>
@@ -6,3 +12,5 @@
 {% endfor %}
 </ul>
 {% endif %}
+
+{% endblock %}

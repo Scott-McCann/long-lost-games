@@ -1,3 +1,9 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Review Comments{% endblock %}
+
+{% block content %}
+<h2>Review Comments</h2>
 {% if review_comments %}
 <ul>
 {% for review_comment in review_comments %}
@@ -5,3 +11,4 @@
 {% endfor %}
 </ul>
 {% endif %}
+{% endblock %}

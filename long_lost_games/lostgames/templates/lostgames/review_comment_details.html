@@ -1,3 +1,8 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Games{% endblock %}
+
+{% block content %}
 <article>
     <h1>{{ review_comment.review }}</h1>
     <h3>Submitted by: {{review_comment.user}}</h3>
@@ -8,3 +13,5 @@
     <h5>Edited: {{review_comment.modified}}</h5>
     <h5>Likes: {{review_comment.likes}}</h5>
 </article>
+
+{% endblock %}
