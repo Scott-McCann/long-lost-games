@@ -33,7 +33,7 @@ def title_Case(title):
     return titlecase(title)
 
 
-def check_name(name):
+def check_Name(name):
     newName = title_Case(name)
     puncts = ['.,?[]}{;:\/|!@&%><']
     for sym in puncts:
