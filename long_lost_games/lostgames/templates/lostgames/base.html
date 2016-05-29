@@ -41,6 +41,13 @@
           <li><a href="{% url 'game:company-index' %}">Companies</a></li>
           <li><a href="{% url 'game:publisher-index' %}">Publishers</a></li>
           <li><a href="{% url 'game:reviews-index' %}">Reviews</a></li>
+          <li><a href="{% url 'game:comments-index' %}">Comments</a></li>
+{% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+
+{% endif %}
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -48,6 +55,7 @@
 
   <div class="container">
     <div class="starter-template">
+      <p> Hello, {{ user.username }}</p>
 
       {% block content %}
         <h2>Title</h2>

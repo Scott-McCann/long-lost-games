@@ -20,9 +20,9 @@ class GamesTestCase(TestCase):
 
     def testGameIndex(self):
         client = Client()
-        resp = client.get('/core/games/')
+        resp = client.get(reverse('game:games-index'))
         self.assertEquals(200, resp.status_code)
-        self.assertContains(resp, "Showing 3 games")
+        self.assertContains(resp, "Showing")
 
     def testGameView(self):
         client = Client()
@@ -30,4 +30,5 @@ class GamesTestCase(TestCase):
         url = '/core/games/'+ str(game.id) + '/'
         resp = client.get(url)
         self.assertContains(resp, game.title)
+        
 # Create your tests here.
