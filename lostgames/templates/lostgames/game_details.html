@@ -17,8 +17,19 @@
 </article>
 
 
-<p><a href="{% url 'game:games-index' %}">back to list</a></p>
+<p><a href="{% url 'game:games-index' %}">|back to list|</a>
+<a href="{% url 'game:edit_game' game_id=game.id %}">|Edit Game|</a>
+</p>
 
+<p>
+  {% if previous_id %}<a href="{% url 'game:game_details' previous_id %}">|Previous|</a>{% endif %}
+  {% if next_id != None %}<a href="{% url 'game:game_details' next_id %}">|Next|</a>{% endif %}
 
+</p>
+
+<!-- <p><ul>{% if game.previous.id %}<li><a href="{% url 'game:game_details' game.previous.id %}">«{{game.previous}}</a></li>{% endif %}
+{% if game.next.id %}<li><a href="{% url 'game:game_details' game.next.id %}">{{game.next}}»</a></li>{% endif %}
+</ul>
+</p> -->
 
 {% endblock %}

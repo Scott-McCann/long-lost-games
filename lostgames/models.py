@@ -61,6 +61,19 @@ class Game(models.Model):
     def better_Title(self):
 
         return title_Case(self.title)
+    # @property
+    # def next(self):
+    #     try:
+    #         return Game.objects.get(pk=self.pk+1)
+    #     except:
+    #         return Game.objects.get(pk=self.pk+2)
+    # @property
+    # def previous(self):
+    #     try:
+    #         return Game.objects.get(pk=self.pk-1)
+    #     except:
+    #         return Game.objects.get(pk=self.pk-2)
+
 
 
     @property
