@@ -27,8 +27,8 @@ def view_game_details(request, game_id):
         raise Http404("No such Game!")
 
     all_things = Game.objects.all()
-    next_id = get_next(all_things,game.id)
-    previous_id = get_previous(all_things,game.id)
+    next_id = get_next(all_things, game.id)
+    previous_id = get_previous(all_things, game.id)
 
     context = { 'game': game,
                 'next_id': next_id,
@@ -36,161 +36,7 @@ def view_game_details(request, game_id):
 
     return render(request, 'lostgames/game_details.html', context)
 
-#System views go here.
-def view_systems(request):
-    systems = System.objects.all()
-    context = { 'systems': systems }
-
-    return render(request, 'lostgames/systems.html', context)
-
-@login_required()
-def view_system_details(request, system_id):
-
-    try:
-        system = System.objects.get(id=system_id)
-    except system.DoesNotExist:
-        raise Http404("No System Found")
-
-    all_things = System.objects.all()
-    next_id = get_next(all_things, system.id)
-    previous_id = get_previous(all_things, system.id)
-
-
-    context = { 'system': system,
-                'next_id': next_id,
-                'previous_id': previous_id}
-
-
-    return render(request, 'lostgames/system_details.html', context)
-
-#Company views go here.
-def view_companies(request):
-    companies = Company.objects.all()
-    context = { 'companies': companies }
-
-    return render(request, 'lostgames/companies.html', context)
-
-@login_required()
-def view_company_details(request, company_id):
-
-    try:
-        company = Company.objects.get(id=company_id)
-    except company.DoesNotExist:
-        raise Http404("No Such Company")
-
-    context = { 'company': company }
-
-    return render(request, 'lostgames/company_details.html', context)
-
-#Director views go here
-def view_directors(request):
-    directors = Director.objects.all()
-    context = { 'directors': directors }
-
-    return render(request, 'lostgames/directors.html', context)
-
-@login_required()
-def view_director_details(request, director_id):
-
-    try:
-        director = Director.objects.get(id=director_id)
-    except director.DoesNotExist:
-        raise Http404("That director has not been born yet.")
-
-    context = { 'director': director }
-
-    return render(request, 'lostgames/director_details.html', context)
-
-#Publihser views go here.
-def view_publishers(request):
-    publishers = Publisher.objects.all()
-    context = { 'publishers': publishers }
-
-    return render(request, 'lostgames/publishers.html', context)
-
-@login_required()
-def view_publisher_details(request, publisher_id):
-
-    try:
-        publisher = Publisher.objects.get(id=publisher_id)
-    except publisher.DoesNotExist:
-        raise Http404("Publisher not published here.")
-
-    context = { 'publisher': publisher }
-
-    return render(request, 'lostgames/publisher_details.html', context)
-
-#Commnet views go here.
-@login_required()
-def view_comments(request):
-    comments = Comment.objects.all()
-    context = { 'comments': comments }
-
-    return render(request, 'lostgames/comments.html', context)
-
-@login_required()
-def view_comment_details(request, comment_id):
-
-    try:
-        comment = Comment.objects.get(id=comment_id)
-    except comment.DoesNotExist:
-        raise Http404("This comment is either missing or non-existant")
-
-    context = { 'comment': comment }
-
-    return render(request, 'lostgames/comment_details.html', context)
-
-@login_required()
-def view_reviews(request):
-    reviews = Review.objects.all()
-    context = { 'reviews': reviews }
-
-    return render(request, 'lostgames/reviews.html', context)
-
-@login_required()
-def view_review_details(request, review_id):
-
-    try:
-        review = Review.objects.get(id=review_id)
-    except review.DoesNotExist:
-        raise Http404("This review is either missing or non-existant")
-
-    context = { 'review': review }
-
-    return render(request, 'lostgames/review_details.html', context)
-
-@login_required()
-def view_review_comments(request):
-    review_comments = Review_Comment.objects.all()
-    context = { 'review_comments': review_comments }
-
-    return render(request, 'lostgames/review_comments.html', context)
-
-@login_required()
-def view_review_comment_details(request, review_comment_id):
-
-    try:
-        review_comment = Review_Comment.objects.get(id=review_comment_id)
-    except review_comment.DoesNotExist:
-        raise Http404("This comment is either missing or non-existant")
-
-    context = { 'review_comment': review_comment }
-
-    return render(request, 'lostgames/review_comment_details.html', context)
-
-
-
-#From Views
-def contact_form(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/core/games/')
-
-    form = ContactForm()
-    context = { 'form': form }
-
-    return render(request, 'lostgames/contact.html', context)
+#Game Forms Go Here.
 
 @login_required
 def create_game_form(request):
@@ -228,6 +74,173 @@ def edit_game_form(request, game_id):
 
     return render(request, 'lostgames/edit_game.html', context)
 
+
+
+
+
+
+
+
+
+
+
+
+
+#System views go here.
+def view_systems(request):
+    systems = System.objects.all()
+    context = { 'systems': systems }
+
+    return render(request, 'lostgames/systems.html', context)
+
+@login_required()
+def view_system_details(request, system_id):
+
+    try:
+        system = System.objects.get(id=system_id)
+    except system.DoesNotExist:
+        raise Http404("No System Found")
+
+    all_things = System.objects.all()
+    next_id = get_next(all_things, system.id)
+    previous_id = get_previous(all_things, system.id)
+
+
+    context = { 'system': system,
+                'next_id': next_id,
+                'previous_id': previous_id}
+
+
+    return render(request, 'lostgames/system_details.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Company views go here.
+def view_companies(request):
+    companies = Company.objects.all()
+    context = { 'companies': companies }
+
+    return render(request, 'lostgames/companies.html', context)
+
+@login_required()
+def view_company_details(request, company_id):
+
+    try:
+        company = Company.objects.get(id=company_id)
+    except company.DoesNotExist:
+        raise Http404("No Such Company")
+
+    context = { 'company': company }
+
+    return render(request, 'lostgames/company_details.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Director views go here
+def view_directors(request):
+    directors = Director.objects.all()
+    context = { 'directors': directors }
+
+    return render(request, 'lostgames/directors.html', context)
+
+@login_required()
+def view_director_details(request, director_id):
+
+    try:
+        director = Director.objects.get(id=director_id)
+    except director.DoesNotExist:
+        raise Http404("That director has not been born yet.")
+
+    context = { 'director': director }
+
+    return render(request, 'lostgames/director_details.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+#Publihser views go here.
+def view_publishers(request):
+    publishers = Publisher.objects.all()
+    context = { 'publishers': publishers }
+
+    return render(request, 'lostgames/publishers.html', context)
+
+@login_required()
+def view_publisher_details(request, publisher_id):
+
+    try:
+        publisher = Publisher.objects.get(id=publisher_id)
+    except publisher.DoesNotExist:
+        raise Http404("Publisher not published here.")
+
+    context = { 'publisher': publisher }
+
+    return render(request, 'lostgames/publisher_details.html', context)
+
+
+
+
+
+
+
+
+
+
+
+#Commnet views go here.
+@login_required()
+def view_comments(request):
+    comments = Comment.objects.all()
+    context = { 'comments': comments }
+
+    return render(request, 'lostgames/comments.html', context)
+
+@login_required()
+def view_comment_details(request, comment_id):
+
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except comment.DoesNotExist:
+        raise Http404("This comment is either missing or non-existant")
+
+    context = { 'comment': comment }
+
+    return render(request, 'lostgames/comment_details.html', context)
+
 @login_required
 def create_comment_form(request):
     if request.method == 'POST':
@@ -242,6 +255,96 @@ def create_comment_form(request):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Review Views
+
+@login_required()
+def view_reviews(request):
+    reviews = Review.objects.all()
+    context = { 'reviews': reviews }
+
+    return render(request, 'lostgames/reviews.html', context)
+
+@login_required()
+def view_review_details(request, review_id):
+
+    try:
+        review = Review.objects.get(id=review_id)
+    except review.DoesNotExist:
+        raise Http404("This review is either missing or non-existant")
+
+    context = { 'review': review }
+
+    return render(request, 'lostgames/review_details.html', context)
+
+
+@login_required
+def edit_review_form(request, review_id):
+
+    try:
+        review = Review.objects.get(id=review_id)
+    except review.DoesNotExist:
+        raise Http404("No such Review!")
+
+    form = None
+    if request.method == 'POST':
+        form= ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            review = form.save()
+            return HttpResponseRedirect('/core/reviews/' + str(review.id))
+
+    else:
+        form = ReviewForm(instance=review)
+
+
+    context = { 'form': form,
+                'review': review }
+
+    return render(request, 'lostgames/edit_review.html', context)
+
+
+
+
+
+
+
+
+
+
+
+#Review Comments
+@login_required()
+def view_review_comments(request):
+    review_comments = Review_Comment.objects.all()
+    context = { 'review_comments': review_comments }
+
+    return render(request, 'lostgames/review_comments.html', context)
+
+@login_required()
+def view_review_comment_details(request, review_comment_id):
+
+    try:
+        review_comment = Review_Comment.objects.get(id=review_comment_id)
+    except review_comment.DoesNotExist:
+        raise Http404("This comment is either missing or non-existant")
+
+    context = { 'review_comment': review_comment }
+
+    return render(request, 'lostgames/review_comment_details.html', context)
+
+
 @login_required
 def create_review_form(request):
     if request.method == 'POST':
@@ -253,3 +356,33 @@ def create_review_form(request):
         form = ReviewForm()
 
     return render(request, 'lostgames/create_review.html', { 'form':form })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Form Views
+def contact_form(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/core/games/')
+
+    form = ContactForm()
+    context = { 'form': form }
+
+    return render(request, 'lostgames/contact.html', context)

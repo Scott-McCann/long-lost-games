@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body background="{% static 'lostgames/moon.png'   %}">
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -31,11 +31,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">lostgames</a>
+        <a class="navbar-brand" href="{% url 'game:core-index' %}">lostgames</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'game:core-index' %}">Home</a></li>
+          <!-- <li class="active"><a href="{% url 'game:core-index' %}">Home</a></li> -->
           <li><a href="{% url 'game:games-index' %}">Games</a></li>
           <li><a href="{% url 'game:system-index' %}">Systems</a></li>
           <li><a href="{% url 'game:company-index' %}">Companies</a></li>
