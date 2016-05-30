@@ -14,4 +14,8 @@
     <h5>Likes: {{review.likes}}</h5>
 
 </article>
+
+<p>
+  <a href="{% url 'game:edit_review' review_id=review.id %}">|Edit Review|</a>
+</p>
 {% endblock %}
