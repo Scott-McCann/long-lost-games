@@ -18,7 +18,7 @@ def view_games(request):
 
     return HttpResponse(templ.render(context, request))
 
-@login_required()
+
 def view_game_details(request, game_id):
 
     try:
@@ -93,7 +93,7 @@ def view_systems(request):
 
     return render(request, 'lostgames/systems.html', context)
 
-@login_required()
+
 def view_system_details(request, system_id):
 
     try:
@@ -134,7 +134,7 @@ def view_companies(request):
 
     return render(request, 'lostgames/companies.html', context)
 
-@login_required()
+
 def view_company_details(request, company_id):
 
     try:
@@ -169,7 +169,7 @@ def view_directors(request):
 
     return render(request, 'lostgames/directors.html', context)
 
-@login_required()
+
 def view_director_details(request, director_id):
 
     try:
@@ -199,7 +199,7 @@ def view_publishers(request):
 
     return render(request, 'lostgames/publishers.html', context)
 
-@login_required()
+
 def view_publisher_details(request, publisher_id):
 
     try:
@@ -222,14 +222,14 @@ def view_publisher_details(request, publisher_id):
 
 
 #Commnet views go here.
-@login_required()
+
 def view_comments(request):
     comments = Comment.objects.all()
     context = { 'comments': comments }
 
     return render(request, 'lostgames/comments.html', context)
 
-@login_required()
+
 def view_comment_details(request, comment_id):
 
     try:
@@ -270,14 +270,14 @@ def create_comment_form(request):
 
 #Review Views
 
-@login_required()
+
 def view_reviews(request):
     reviews = Review.objects.all()
     context = { 'reviews': reviews }
 
     return render(request, 'lostgames/reviews.html', context)
 
-@login_required()
+
 def view_review_details(request, review_id):
 
     try:
@@ -325,14 +325,14 @@ def edit_review_form(request, review_id):
 
 
 #Review Comments
-@login_required()
+
 def view_review_comments(request):
     review_comments = Review_Comment.objects.all()
     context = { 'review_comments': review_comments }
 
     return render(request, 'lostgames/review_comments.html', context)
 
-@login_required()
+
 def view_review_comment_details(request, review_comment_id):
 
     try:
