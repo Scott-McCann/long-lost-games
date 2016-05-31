@@ -1,0 +1,15 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %} Edit {{game.id}}{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'game:edit_game' game_id=game.id %}" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' value="submit" />
+
+
+</form>
+
+{% endblock %}

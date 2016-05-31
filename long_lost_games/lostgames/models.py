@@ -72,6 +72,11 @@ class Game(models.Model):
         return self.title
 
 
+
+
+
+
+
 class Photo(models.Model):
     image = models.ImageField()
     submitted_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
@@ -79,6 +84,11 @@ class Photo(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+
+
+
 
 class System(models.Model):
     name = models.CharField(max_length=256)
@@ -88,6 +98,11 @@ class System(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
+
+
 class Company(models.Model):
     name = models.CharField(max_length=256)
     date_founded = models.DateField()
@@ -95,6 +110,11 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+
 
 class Director(models.Model):
     name = models.CharField(max_length=256)
@@ -104,6 +124,10 @@ class Director(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
+
 class Publisher(models.Model):
     name = models.CharField(max_length=256)
     date_founded = models.DateField()
@@ -111,6 +135,9 @@ class Publisher(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
 
 
 class Comment(models.Model):
@@ -131,6 +158,10 @@ class Comment(models.Model):
         return relativedelta(date.today(), self.created)
 
 
+
+
+
+
 class Review(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     review_text = models.TextField(blank=False)
@@ -147,6 +178,10 @@ class Review(models.Model):
 
     def game_Case(self):
         return title_Case(self.game)
+
+
+
+
 
 class Review_Comment(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
