@@ -18,7 +18,11 @@
 
 
 <p><a href="{% url 'game:games-index' %}">|back to list|</a>
-<a href="{% url 'game:edit_game' game_id=game.id %}">|Edit Game|</a>
+  {% if 'lostgames.change_game' in perms %}
+    <a href="{% url 'game:edit_game' game_id=game.id %}">|Edit Game|</a>
+     {% endif %}
+
+
 </p>
 
 <p>

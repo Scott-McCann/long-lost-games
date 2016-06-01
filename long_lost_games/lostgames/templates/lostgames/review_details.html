@@ -16,6 +16,11 @@
 </article>
 
 <p>
+  {% if 'lostgames.change_review' in perms %}
   <a href="{% url 'game:edit_review' review_id=review.id %}">|Edit Review|</a>
+
+
+
+    {% endif %}
 </p>
 {% endblock %}

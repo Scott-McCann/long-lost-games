@@ -14,6 +14,10 @@
 {% endif %}
 
 <p>
-  <a href="{% url 'game:create_review' %}">|Add Review|
+  {% if 'lostgames.add_review' in perms %}
+    <a href="{% url 'game:create_review' %}">|Add Review|
+
+
+    {% endif %}
 </p>
 {% endblock %}
