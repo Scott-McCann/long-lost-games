@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import Game, System, Company, Director, Publisher, Comment, Review, Review_Comment
 from django.template import loader
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .forms import ContactForm, GameForm, ReviewForm, CommentForm
 from .utils import get_next, get_previous
+
 # Create your views here.
 def index(request):
     return render(request, 'lostgames/index.html')
@@ -50,7 +52,7 @@ def create_game_form(request):
 
     return render(request, 'lostgames/create_game.html', { 'form':form })
 
-@login_required
+@permission_required('lostgames.change_game')
 def edit_game_form(request, game_id):
 
     try:
@@ -241,7 +243,7 @@ def view_comment_details(request, comment_id):
 
     return render(request, 'lostgames/comment_details.html', context)
 
-@login_required
+@permission_required('lostgames.add_comment')
 def create_comment_form(request):
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -255,7 +257,17 @@ def create_comment_form(request):
 
 
 
-
+# @permission_required('lodthsmrd.moderate_comment')
+# def moderate_comment(request, comment_id):
+#     comment = Comment.objects.get(id=comment_id)
+#      if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#            if form.is_valid():
+#      comment = form.save()
+#      return HttpResponseRedirect('/core/comments/' + str(comment.id))
+#     else:
+#          pass
+#          # show form
 
 
 
@@ -290,7 +302,7 @@ def view_review_details(request, review_id):
     return render(request, 'lostgames/review_details.html', context)
 
 
-@login_required
+@permission_required('lostgames.change_review')
 def edit_review_form(request, review_id):
 
     try:
@@ -345,7 +357,7 @@ def view_review_comment_details(request, review_comment_id):
     return render(request, 'lostgames/review_comment_details.html', context)
 
 
-@login_required
+@permission_required('lostgames.add_review_comment')
 def create_review_form(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST)

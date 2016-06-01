@@ -74,7 +74,10 @@ class Game(models.Model):
 
 
 
-
+    class Meta:
+        permissions = (
+            ("view_unshown_Game", "Can see games that have not been shown."),
+        )
 
 
 
@@ -148,6 +151,7 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(default=0)
+    moderated = models.BooleanField(default=False, null=False)
 
     def __str__(self):
         return str(self.id) + ' ' + str(self.game) + '   -by: ' + str(self.user)
@@ -157,6 +161,12 @@ class Comment(models.Model):
 
     def age(self):
         return relativedelta(date.today(), self.created)
+
+    class Meta:
+        permissions = (
+            ("view_unmoderated_comment", "Can view unmoderated comments"),
+            ("moderate_comment", "Can moderate comments"),
+        )
 
 
 

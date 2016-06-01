@@ -23,7 +23,10 @@
 {% endif %}
 
 <p>
+  {% if 'lostgames.change_game' in perms %}
   <a href="{% url 'game:create_game' %}">|Add Game|
+
+     {% endif %}
 </p>
 
 {% endblock %}
