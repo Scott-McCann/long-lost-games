@@ -1,0 +1,9 @@
+DateTime==4.1.1
+Django==1.9.6
+django-bootstrap3==7.0.1
+Pillow==3.2.0
+python-dateutil==2.5.3
+pytz==2016.4
+six==1.10.0
+titlecase==0.8.1
+zope.interface==4.1.3
