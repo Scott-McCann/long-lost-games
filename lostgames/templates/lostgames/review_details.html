@@ -1,0 +1,26 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Games{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ review.game }}</h1>
+    <h3>Submitted by: {{review.user}}</h3>
+    <h5>Created: {{review.created}} </h5>
+
+  <p> {{review.review_text}}</p>
+
+    <h5>Edited: {{review.modified}}</h5>
+    <h5>Likes: {{review.likes}}</h5>
+
+</article>
+
+<p>
+  {% if 'lostgames.change_review' in perms %}
+  <a href="{% url 'game:edit_review' review_id=review.id %}">|Edit Review|</a>
+
+
+
+    {% endif %}
+</p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}Publisher{% endblock %}
+
+{% block content %}
+
+<article>
+<h1>{{ publisher.name }}</h1>
+
+<p>Date Founded: {{ publisher.date_founded }}</p>
+
+<p>C.E.O.: {{ publisher.ceo }}</p>
+
+</article>
+
+{% endblock %}

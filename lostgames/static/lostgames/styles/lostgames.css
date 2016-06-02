@@ -1,0 +1,14 @@
+body {
+  padding-top: 50px;
+  text-color: red;
+}
+
+
+p {
+  color: green;
+}
+
+.starter-template {
+  padding: 20px 15px;
+  text-align: left;
+}

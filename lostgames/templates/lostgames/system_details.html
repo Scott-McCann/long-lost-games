@@ -1,0 +1,21 @@
+{% extends 'lostgames/base.html' %}
+
+{% block title %}System{% endblock %}
+
+{% block content %}
+<article>
+<h1>{{ system.name}}</h1>
+
+<p>{{ system.company }}</p>
+
+<p>{{system.release_date}}
+
+</article>
+
+<p>
+  {% if previous_id %}<a href="{% url 'game:system_details' previous_id %}">|Previous|</a>{% endif %}
+  {% if next_id != None %}<a href="{% url 'game:system_details' next_id %}">|Next|</a>{% endif %}
+
+</p>
+
+{% endblock %}
