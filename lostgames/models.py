@@ -48,7 +48,7 @@ class Game(models.Model):
         default="Adventure")
 
     title = models.CharField(max_length=256)
-    box_art = models.OneToOneField('Photo', null=True, related_name='box_art')
+
     release_date = models.DateField(db_index=True)
     systems = models.ManyToManyField('System')
     company = models.ForeignKey('Company', null=True)
@@ -80,14 +80,6 @@ class Game(models.Model):
         )
 
 
-
-class Photo(models.Model):
-    image = models.ImageField()
-    submitted_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    caption = models.CharField(max_length=256)
-
-    def __str__(self):
-        return str(self.id)
 
 
 
