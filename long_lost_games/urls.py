@@ -15,12 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework import routers
+from lostgames.api import UserViewSet, GameViewSet
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'users', GameViewSet)
 
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^core/', include('lostgames.urls')),
     # url(r'^systems/', include('lostgames.system_urls')),
     # url(r'^companies/', include('lostgames.company_urls')),
-    url(r'^admin/', admin.site.urls)
-
+    url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
