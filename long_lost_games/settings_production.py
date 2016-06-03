@@ -3,7 +3,7 @@ import dj_database_url
 
 DEBUG = False
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = [*]
 
 
 db_from_env = dj_database_url.config(conn_max_age=500)
