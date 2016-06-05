@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
-from lostgames.api import UserViewSet, GameViewSet
+from lostgames.api import UserViewSet, GameViewSet, ReviewViewSet, CommentViewSet, SystemViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'users', GameViewSet)
+router.register(r'games', GameViewSet)
+router.register(r'reviews', ReviewViewSet)
+router.register(r'comments', CommentViewSet)
+router.register(r'systems', SystemViewSet)
 
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
